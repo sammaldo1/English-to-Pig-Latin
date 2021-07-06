@@ -130,10 +130,16 @@ console.assert("ay-say" === encodeConsonantWord("say"), JSON.stringify({
         "you" becomes "ou-yay" because it starts with a consonant "y"
 */
 function encodeWord(word) {
-  let wordTranslated = encodeConsonantWord(word)
-  return wordTranslated; // replace this!
-}
+  let vowels = ["a", "e", "i", "o", "u"]
+  let wordBeingTranslated = word
+  if (vowels.includes(wordBeingTranslated[0])) {
+    return encodeVowelWord(word)
+  }
+  if (vowels.includes(wordBeingTranslated[1]) || vowels.includes(wordBeingTranslated[2])) {
+    return encodeConsonantWord(word);
+  }
 
+}
 // Write your unit tests here
 const testClusteredConsonantWords = {
   cheers: "eers-chay",
@@ -143,12 +149,13 @@ const testClusteredConsonantWords = {
   thanks: "anks-thay",
   stupid: "upid-stay",
   glove: "ove-glay",
+  eat: "eat-yay"
 };
 
-console.assert("eers-chay" === encodeWord("cheers"), JSON.stringify({
-  "test": "should return eers-chay",
-  "expected": "eers-chay",
-  "result": encodeWord("cheers")
+console.assert("eat-yay" === encodeWord("eat"), JSON.stringify({
+  "test": "should return eat-yay",
+  "expected": "eat-yay",
+  "result": encodeWord("eat")
 }))
 
 console.assert("anks-thay" === encodeWord("thanks"), JSON.stringify({
