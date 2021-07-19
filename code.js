@@ -11,12 +11,14 @@
         "eat" becomes "eat-yay"
         "omelet" becomes "omelet-yay" 
 */
+
+const vowels = ["a", "e", "i", "o", "u"];
+let wordTranslated = ""
+let wordTranslatedToPigLatin = ""
+let wordSliced = ""
 function encodeVowelWord(word) {
-  let vowels = ["a", "e", "i", "o", "u"];
-  let wordBeingTranslated = word
-  let wordTranslated = ""
-  if (vowels.includes(wordBeingTranslated[0])) {
-    wordTranslated = `${wordBeingTranslated}-yay`
+  if (vowels.includes(word[0])) {
+    wordTranslated = `${word}-yay`
     return wordTranslated
   }
 }
@@ -65,25 +67,22 @@ console.assert("are-yay" == encodeVowelWord("are"), JSON.stringify({
 */
 function encodeConsonantWord(word) {
 
-  let vowels = ["a", "e", "i", "o", "u"]
-  let wordTranslated = ""
-  let wordBeingTranslated = word
-  if (vowels.includes(wordBeingTranslated[1])) {
-    wordTranslated = wordBeingTranslated.slice(0, 1)
-    let wordBeingTranslated2 = wordBeingTranslated.slice(1)
-    let wordBeingTranslated3 = `${wordBeingTranslated2}-${wordTranslated}ay`
-    return wordBeingTranslated3
+  if (vowels.includes(word[1])) {
+    wordTranslated = word.slice(0, 1)
+    wordSliced = word.slice(1)
+    wordTranslatedToPigLatin = `${wordSliced}-${wordTranslated}ay`
+    return wordTranslatedToPigLatin
 
-  } else if (vowels.includes(wordBeingTranslated[2])) {
-    let wordTranslated = wordBeingTranslated.slice(0, 2)
-    let wordBeingTranslated2 = wordBeingTranslated.slice(2)
-    let wordBeingTranslated3 = `${wordBeingTranslated2}-${wordTranslated}ay`
-    return wordBeingTranslated3
+  } else if (vowels.includes(word[2])) {
+    wordTranslated = word.slice(0, 2)
+    wordSliced = word.slice(2)
+    wordTranslatedToPigLatin = `${wordSliced}-${wordTranslated}ay`
+    return wordTranslatedToPigLatin
   } else {
-    let wordTranslated = wordBeingTranslated.slice(0, 3)
-    let wordBeingTranslated2 = wordBeingTranslated.slice(3)
-    let wordBeingTranslated3 = `${wordBeingTranslated2}-${wordTranslated}ay`
-    return wordBeingTranslated3
+    wordTranslated = word.slice(0, 3)
+    wordSliced = word.slice(3)
+    wordTranslatedToPigLatin = `${wordSliced}-${wordTranslated}ay`
+    return wordTranslatedToPigLatin
   }
 }
 ;
@@ -130,12 +129,10 @@ console.assert("ay-say" === encodeConsonantWord("say"), JSON.stringify({
         "you" becomes "ou-yay" because it starts with a consonant "y"
 */
 function encodeWord(word) {
-  let vowels = ["a", "e", "i", "o", "u"]
-  let wordBeingTranslated = word
-  if (vowels.includes(wordBeingTranslated[0])) {
+  if (vowels.includes(word[0])) {
     return encodeVowelWord(word)
   }
-  if (vowels.includes(wordBeingTranslated[1]) || vowels.includes(wordBeingTranslated[2])) {
+  if (vowels.includes(word[1]) || vowels.includes(word[2])) {
     return encodeConsonantWord(word);
   }
 
@@ -169,7 +166,6 @@ console.assert("anks-thay" === encodeWord("thanks"), JSON.stringify({
     Encode a full sentence or paragraph from english to pig latin.
 */
 function encodeText(text) {
-  let vowels = ["a", "e", "i", "o", "u"]
   let wordBeingTranslated = text.split(" ")
   let wordTranslated = []
   for (let i = 0; i < wordBeingTranslated.length; i += 1) {
