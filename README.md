@@ -1,4 +1,4 @@
-## Taking English words to Pig Latin and using Unit Testing to check translation.
+## Taking English words to Pig-Latin and using Unit Testing to check translation.
 
 created using:
 **JavaScript** | **Unit Tests** | **Functions** | **JSON** | **Loops**
