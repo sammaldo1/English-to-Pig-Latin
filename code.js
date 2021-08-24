@@ -13,19 +13,17 @@
 */
 
 const vowels = ["a", "e", "i", "o", "u"];
-let wordTranslated = ""
-let wordTranslatedToPigLatin = ""
-let wordSliced = ""
+let wordTranslated = "";
+let wordTranslatedToPigLatin = "";
+let wordSliced = "";
 function encodeVowelWord(word) {
   if (vowels.includes(word[0])) {
-    wordTranslated = `${word}-yay`
-    return wordTranslated
+    wordTranslated = `${word}-yay`;
+    return wordTranslated;
   }
 }
 
-
-
-//Write your unit tests here;
+//unit tests here
 const testVowelWords = {
   eat: "eat-yay",
   omelet: "omelet-yay",
@@ -39,21 +37,24 @@ const testVowelWords = {
   under: "under-yay",
   island: "island-yay",
   elegant: "elegant-yay",
-
 };
 
-console.assert("under-yay" == encodeVowelWord("under"), JSON.stringify({
-  test: "should return under-yay",
-  expected: "under-yay",
-  result: encodeVowelWord("under")
-
-
-}))
-console.assert("are-yay" == encodeVowelWord("are"), JSON.stringify({
-  "test": "should return are-yay",
-  "expected": "are-yay",
-  "result": encodeVowelWord("are")
-}))
+console.assert(
+  "under-yay" == encodeVowelWord("under"),
+  JSON.stringify({
+    test: "should return under-yay",
+    expected: "under-yay",
+    result: encodeVowelWord("under"),
+  })
+);
+console.assert(
+  "are-yay" == encodeVowelWord("are"),
+  JSON.stringify({
+    test: "should return are-yay",
+    expected: "are-yay",
+    result: encodeVowelWord("are"),
+  })
+);
 /*  --------------------------------------------------------
     encodeConsonantWord()
  
@@ -66,27 +67,24 @@ console.assert("are-yay" == encodeVowelWord("are"), JSON.stringify({
         "cheers" becomes "eers-chay"
 */
 function encodeConsonantWord(word) {
-
   if (vowels.includes(word[1])) {
-    wordTranslated = word.slice(0, 1)
-    wordSliced = word.slice(1)
-    wordTranslatedToPigLatin = `${wordSliced}-${wordTranslated}ay`
-    return wordTranslatedToPigLatin
-
+    wordTranslated = word.slice(0, 1);
+    wordSliced = word.slice(1);
+    wordTranslatedToPigLatin = `${wordSliced}-${wordTranslated}ay`;
+    return wordTranslatedToPigLatin;
   } else if (vowels.includes(word[2])) {
-    wordTranslated = word.slice(0, 2)
-    wordSliced = word.slice(2)
-    wordTranslatedToPigLatin = `${wordSliced}-${wordTranslated}ay`
-    return wordTranslatedToPigLatin
+    wordTranslated = word.slice(0, 2);
+    wordSliced = word.slice(2);
+    wordTranslatedToPigLatin = `${wordSliced}-${wordTranslated}ay`;
+    return wordTranslatedToPigLatin;
   } else {
-    wordTranslated = word.slice(0, 3)
-    wordSliced = word.slice(3)
-    wordTranslatedToPigLatin = `${wordSliced}-${wordTranslated}ay`
-    return wordTranslatedToPigLatin
+    wordTranslated = word.slice(0, 3);
+    wordSliced = word.slice(3);
+    wordTranslatedToPigLatin = `${wordSliced}-${wordTranslated}ay`;
+    return wordTranslatedToPigLatin;
   }
 }
-;
-// Write your unit tests here
+// unit tests
 const testSimpleConsonantWords = {
   latin: "atin-lay",
   banana: "anana-bay",
@@ -105,16 +103,22 @@ const testSimpleConsonantWords = {
   bagel: "agel-bay",
   you: "ou-yay",
 };
-console.assert("ash-tray" === encodeConsonantWord("trash"), JSON.stringify({
-  "test": "should return ash-tray",
-  "expected": "ash-tray",
-  "result": encodeConsonantWord("trash")
-}))
-console.assert("ay-say" === encodeConsonantWord("say"), JSON.stringify({
-  "test": "should return ay-say",
-  "expected": "ay-say",
-  "result": encodeConsonantWord("say")
-}))
+console.assert(
+  "ash-tray" === encodeConsonantWord("trash"),
+  JSON.stringify({
+    test: "should return ash-tray",
+    expected: "ash-tray",
+    result: encodeConsonantWord("trash"),
+  })
+);
+console.assert(
+  "ay-say" === encodeConsonantWord("say"),
+  JSON.stringify({
+    test: "should return ay-say",
+    expected: "ay-say",
+    result: encodeConsonantWord("say"),
+  })
+);
 /*  --------------------------------------------------------
     encodeWord()
  
@@ -130,14 +134,13 @@ console.assert("ay-say" === encodeConsonantWord("say"), JSON.stringify({
 */
 function encodeWord(word) {
   if (vowels.includes(word[0])) {
-    return encodeVowelWord(word)
+    return encodeVowelWord(word);
   }
   if (vowels.includes(word[1]) || vowels.includes(word[2])) {
     return encodeConsonantWord(word);
   }
-
 }
-// Write your unit tests here
+// unit tests here
 const testClusteredConsonantWords = {
   cheers: "eers-chay",
   shesh: "esh-shay",
@@ -146,50 +149,60 @@ const testClusteredConsonantWords = {
   thanks: "anks-thay",
   stupid: "upid-stay",
   glove: "ove-glay",
-  eat: "eat-yay"
+  eat: "eat-yay",
 };
 
-console.assert("eat-yay" === encodeWord("eat"), JSON.stringify({
-  "test": "should return eat-yay",
-  "expected": "eat-yay",
-  "result": encodeWord("eat")
-}))
+console.assert(
+  "eat-yay" === encodeWord("eat"),
+  JSON.stringify({
+    test: "should return eat-yay",
+    expected: "eat-yay",
+    result: encodeWord("eat"),
+  })
+);
 
-console.assert("anks-thay" === encodeWord("thanks"), JSON.stringify({
-  "test": "should return anks-thay",
-  "expected": "anks-thay",
-  "result": encodeWord("thanks")
-}))
+console.assert(
+  "anks-thay" === encodeWord("thanks"),
+  JSON.stringify({
+    test: "should return anks-thay",
+    expected: "anks-thay",
+    result: encodeWord("thanks"),
+  })
+);
 /*  --------------------------------------------------------
     encodeText()    
  
     Encode a full sentence or paragraph from english to pig latin.
 */
 function encodeText(text) {
-  let wordBeingTranslated = text.split(" ")
-  let wordTranslated = []
+  let wordBeingTranslated = text.split(" ");
+  let wordTranslated = [];
   for (let i = 0; i < wordBeingTranslated.length; i += 1) {
     if (vowels.includes(wordBeingTranslated[i][0])) {
-      wordTranslated.push(encodeVowelWord(wordBeingTranslated[i]))
+      wordTranslated.push(encodeVowelWord(wordBeingTranslated[i]));
     } else {
-      wordTranslated.push(encodeConsonantWord(wordBeingTranslated[i]))
+      wordTranslated.push(encodeConsonantWord(wordBeingTranslated[i]));
     }
   }
 
-  return wordTranslated.join(" ").toLowerCase()
+  return wordTranslated.join(" ").toLowerCase();
 }
 
-// Write your unit tests here
-console.assert("ow-hay are-yay ou-yay" === encodeText("How are you"), JSON.stringify({
-  "test": "should return ow-hay are-yay ou-yay",
-  "expected": "ow-hay are-yay ou-yay",
-  "result": encodeText("How are you")
-}))
+//unit tests
+console.assert(
+  "ow-hay are-yay ou-yay" === encodeText("How are you"),
+  JSON.stringify({
+    test: "should return ow-hay are-yay ou-yay",
+    expected: "ow-hay are-yay ou-yay",
+    result: encodeText("How are you"),
+  })
+);
 
-console.assert("is-thay as-way ard-hay" === encodeText("this was hard"), JSON.stringify({
-  "test": "should return is-thay as-way ard-hay",
-  "expected": "is-thay as-way ard-hay",
-  "result": encodeText("this was hard")
-}))
-
-//worked with Nico and Daniel Calhoun
+console.assert(
+  "is-thay as-way ard-hay" === encodeText("this was hard"),
+  JSON.stringify({
+    test: "should return is-thay as-way ard-hay",
+    expected: "is-thay as-way ard-hay",
+    result: encodeText("this was hard"),
+  })
+);
