@@ -12,7 +12,7 @@ created using:
 
 How to check if it works: 
 --
-+ Click here: 
++ Click here: https://sammaldo1.github.io/English-to-Pig-Latin/
 + Righ click on page
 + Click "Inspect"
 + Select the "Console" tab
